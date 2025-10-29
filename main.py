@@ -3,9 +3,10 @@ from turtle import Screen
 import pandas
 
 def get_state_lon_lat(x, y):
+    """Take the lat/lon position of the state by clicking on each state on the map"""
     print(x, y)
-    turtle.onscreenclick(get_state_lon_lat)
-    turtle.mainloop()
+# turtle.onscreenclick(get_state_lon_lat)
+# turtle.mainloop()
 
 ALIGNMENT = 'center'
 FONT = ('Courier', 40, 'normal')
@@ -30,6 +31,7 @@ def format_time(seconds_left):
 
 
 def countdown():
+    """Display the remaining time; once the timer reaches 0 the final score is displayed"""
     global remaining_time, time_up
     if remaining_time > 0:
         remaining_time -= 1
@@ -54,9 +56,10 @@ while len(guessed_states) < 50 and not time_up:
         prompt="🗺️Guess the States📌 (or type Exit)"
     ).title()
 
+    #in case time's up during the user is typing
     if time_up:
         break
-
+    #in case user closes the prompt
     if answer_state is None:
         break
 
@@ -81,5 +84,4 @@ if not time_up and len(guessed_states) == 50:
     turtle.hideturtle()
     turtle.goto(0, 0)
     turtle.write("💥💥💥💥CONGRATS💥💥💥💥", align=ALIGNMENT, font=FONT)
-
-screen.exitonclick()
+    screen.exitonclick()
